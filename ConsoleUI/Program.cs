@@ -14,8 +14,6 @@ namespace ConsoleUI
              * Todo follow all comments!! 
              */
 
-            #region Vehicles
-
             /*
              * Create an abstract class called Vehicle
              * The vehicle class shall have three string properties Year, Make, and Model
@@ -31,23 +29,35 @@ namespace ConsoleUI
              * Only in the Motorcycle class will you override the virtual drive method
             */
 
-            // Create a list of Vehicle called vehicles
+            var vehicles = new List<Vehicle>();
 
-            /*
-             * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
-             * - new it up as one of each derived class
-             * Set the properties with object initializer syntax
-             */
+            var dart = new Car() { HasTrunk = true, Make = "Dodge", Model = "Dart", Year = 2014 };
+            var motorcycle = new Motorcycle() { HasSideCart = true, Make = "Honda", Model = "Goldwing", Year = 2020 };
 
-            /*
-             * Add the 4 vehicles to the list
-             * Using a foreach loop iterate over each of the properties
-             */
+            Vehicle sedan = new Car() { HasTrunk = true, Make = "Ford", Model = "Focus", Year = 2018 };
+            Vehicle fourdoor = new Car() { HasTrunk = false, Make = "UFO", Model = "unknown", Year = 3022 };
 
-            // Call each of the drive methods for one car and one motorcycle
+            vehicles.Add(dart);
+            vehicles.Add(motorcycle);
+            vehicles.Add(sedan);
+            vehicles.Add(fourdoor);
 
-            #endregion            
-            Console.ReadLine();
+            foreach (var veh in vehicles)
+            {
+                Console.WriteLine($"Make {veh.Make} Model {veh.Model}, Year {veh.Year}");
+                veh.DriveAbstract();
+                Console.WriteLine("------------");
+            }
+
+
         }
     }
 }
+
+
+// Create a list of Vehicle called vehicles
+
+
+//Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
+//- new it up as one of each derived class
+//Set the properties with object initializer syntax//
